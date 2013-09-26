@@ -1,22 +1,151 @@
 body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+.container {
+  height: 300px;
 }
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.asl-spell {
+  margin: 50px auto 0 auto;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: #eee;
+  border-radius: 6px;
+  padding: 60px;
+  height: 100%;
+  width: 300px;
 }
+
+.asl-spell .cropper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+
+}
+
+[data-asl-spell] .finger-sign {
+  width: 300px;
+  height: 100%;
+  background-image: url('/img/asl_alphabet.svg');
+  background-repeat: no-repeat;
+  background-size: 750%;
+  overflow: hidden;
+}
+
+[data-asl-spell=""] .finger-sign { display: none; }
+
+[data-asl-spell="a"] .finger-sign { background-position: 0% 4%; }
+
+[data-asl-spell="b"] .finger-sign { background-position: 17% 3%; }
+
+[data-asl-spell="c"] .finger-sign { background-position: 32% 3%; }
+
+[data-asl-spell="d"] .finger-sign { background-position: 49% 2.25%; }
+
+[data-asl-spell="e"] .finger-sign { background-position: 63% 3.25%; }
+
+[data-asl-spell="f"] .finger-sign { background-position: 78% 2.25%; }
+
+[data-asl-spell="g"] .finger-sign { background-position: 94% 4.25%; }
+
+[data-asl-spell="h"] .finger-sign { background-position: 5% 26%; }
+
+[data-asl-spell="i"] .finger-sign { background-position: 23% 25%; }
+
+[data-asl-spell="j"] .finger-sign { background-position: 42% 25%; }
+
+[data-asl-spell="k"] .finger-sign { background-position: 59% 24%; }
+
+[data-asl-spell="l"] .finger-sign { background-position: 75% 24%; }
+
+[data-asl-spell="m"] .finger-sign { background-position: 93% 25.5%; }
+
+[data-asl-spell="n"] .finger-sign { background-position: 2% 47.5%; }
+
+[data-asl-spell="o"] .finger-sign { background-position: 19% 46.5%; }
+
+[data-asl-spell="p"] .finger-sign { background-position: 40% 46.5%; }
+
+[data-asl-spell="q"] .finger-sign { background-position: 61% 46.5%; }
+
+[data-asl-spell="r"] .finger-sign { background-position: 78% 45.5%; }
+
+[data-asl-spell="s"] .finger-sign { background-position: 93% 46.5%; }
+
+[data-asl-spell="t"] .finger-sign { background-position: 0% 68%; }
+
+[data-asl-spell="u"] .finger-sign { background-position: 15% 67%; }
+
+[data-asl-spell="v"] .finger-sign { background-position: 30% 67%; }
+
+[data-asl-spell="w"] .finger-sign { background-position: 44% 67%; }
+
+[data-asl-spell="x"] .finger-sign { background-position: 61% 67%; }
+
+[data-asl-spell="y"] .finger-sign { background-position: 79% 67%; }
+
+[data-asl-spell="z"] .finger-sign { background-position: 99% 66%; }
+
+[data-asl-spell="0"] .cropper,
+[data-asl-spell="1"] .cropper,
+[data-asl-spell="2"] .cropper,
+[data-asl-spell="3"] .cropper,
+[data-asl-spell="4"] .cropper,
+[data-asl-spell="5"] .cropper,
+[data-asl-spell="6"] .cropper,
+[data-asl-spell="7"] .cropper,
+[data-asl-spell="8"] .cropper,
+[data-asl-spell="9"] .cropper {
+  width: 85%;
+}
+
+[data-asl-spell="0"] .finger-sign,
+[data-asl-spell="1"] .finger-sign,
+[data-asl-spell="2"] .finger-sign,
+[data-asl-spell="3"] .finger-sign,
+[data-asl-spell="4"] .finger-sign,
+[data-asl-spell="5"] .finger-sign,
+[data-asl-spell="6"] .finger-sign,
+[data-asl-spell="7"] .finger-sign,
+[data-asl-spell="8"] .finger-sign,
+[data-asl-spell="9"] .finger-sign {
+  background-position-y: 92%;
+}
+
+[data-asl-spell="0"] .finger-sign { background-position-x: 1%; }
+
+[data-asl-spell="1"] .finger-sign { background-position-x: 12.75%; }
+[data-asl-spell="1"] .cropper { width: 65%; }
+
+[data-asl-spell="2"] .finger-sign { background-position-x: 21.5%; }
+[data-asl-spell="2"] .cropper { width: 65%; }
+
+
+[data-asl-spell="3"] .finger-sign { background-position-x: 31%; }
+
+[data-asl-spell="4"] .finger-sign { background-position-x: 42.5%; }
+
+[data-asl-spell="5"] .finger-sign { background-position-x: 55.5%; }
+
+[data-asl-spell="6"] .finger-sign { background-position-x: 68.5%; }
+[data-asl-spell="6"] .cropper { width: 65%; }
+
+[data-asl-spell="7"] .finger-sign { background-position-x: 78.5%; }
+[data-asl-spell="7"] .cropper { width: 70%; }
+
+[data-asl-spell="8"] .finger-sign { background-position-x: 88.5%; }
+[data-asl-spell="8"] .cropper { width: 70%; }
+
+[data-asl-spell="9"] .finger-sign { background-position-x: 100%; }
+[data-asl-spell="9"] .cropper { width: 70%; }
