@@ -4,6 +4,13 @@ body {
   color: #333;
 }
 
+.debug {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: 1px solid pink;
+}
+
 .container {
   height: 300px;
 }
@@ -25,6 +32,36 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+}
+
+.spell-form {
+  padding: 1ex;
+}
+
+.spell-form label {
+  width: 100%;
+}
+
+.spell-form [for="tospell"] input {
+  width: 70%;
+}
+
+.spell-form label[for="speed"] {
+  font-size: 1.25ex;
+  font-style: italic;
+}
+
+.spell-form label[for="speed"] .seconds {
+  text-align: right;
+  font-weight: bold;
+  font-style: none;
+}
+
+.spell-form [for="speed"] input {
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
+  float: right;
 }
 
 h1 {
