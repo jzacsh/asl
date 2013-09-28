@@ -1,17 +1,22 @@
 <div class="asl-spell" data-asl-spell="{{config.active_sign}}">
-  <pre class="debug">{{config | json}}</pre>
+  <pre class="debug">DEBUG INFO:<br />{{config | json}}</pre>
 
   <div class="cropper">
     <div class="finger-sign" title="&quot;{{config.active_sign}}&quot; sign"></div>
   </div>
 
   <div class="spell-form">
+    <button class="btn btn-primary"
+            ng:click="spellPseudoRandomWord()">
+      random word
+    </button>
+
     <label for="tospell">
       <input type="text"
              name="spell"
              placeholder="word to spell"
              ng:model="config.to_spell" />
-      <button class="btn btn-primary"
+      <button class="btn"
               type="submit"
               for="spell"
               ng:click="fingerSpellWord(config.to_spell)">spell</button>
@@ -27,5 +32,19 @@
              max="10"
              ng-model="config.letter_delay"/>
    </label>
+   <button class="btn"
+           ng:show="config.spelled_history.length"
+           ng:click="fingerSpellWord(getLastWord())">
+     Replay Word
+   </button>
+   <div class="tip">
+     <h3>Word Being Spelled:</h3>
+     <p class="active-word">
+      <span class="instructions">hover here to see the word</span>
+      <span class="word">
+       {{getLastWord()}}
+      </span>
+    <p>
+   </div>
   </div>
 </div><!--//.asl-spell-->

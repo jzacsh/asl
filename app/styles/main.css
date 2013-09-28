@@ -38,7 +38,40 @@ body {
 }
 
 .spell-form {
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 1ex;
+}
+
+.spell-form .tip  {
+  margin-top: 2em;
+}
+
+.spell-form .active-word  {
+  text-align: center;
+}
+
+.spell-form .active-word .word,
+.spell-form .active-word .word {
+  visibility: hidden;
+}
+
+.spell-form .active-word .instructions,
+.spell-form .active-word .instructions {
+  font-style: italic;
+  font-size: 1.25ex;
+  visibility: visible;
+}
+
+.spell-form .active-word:hover .word,
+.spell-form .active-word:focus .word {
+  visibility: visible;
+}
+
+.spell-form .active-word:hover .instructions,
+.spell-form .active-word:focus .instructions {
+  visibility: hidden;
 }
 
 .spell-form label {

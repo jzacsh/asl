@@ -47,7 +47,12 @@ angular.module('spellApp')
   .controller('MainCtrl', function ($http, $scope, $timeout) {
     $scope.config = {
       letter_delay: DEFAULT_LETTER_DELAY,
-      to_spell: DEFAULT_TO_SPELL,
+      to_spell: '',
+      /**
+       * History of words spelled in the current session.
+       * @type {!Array.<string>}
+       */
+      spelled_history: [],
       /**
        * Free database of Words fetched from
        * http://www.giwersworld.org/computers/linux/common-words.phtml
@@ -65,6 +70,29 @@ angular.module('spellApp')
     $scope.delay;
 
     /**
+     * @return {string}
+     *     The most recently finger-spelled word.
+     */
+    $scope.getLastWord = function() {
+      var historyLength = $scope.config.spelled_history.length;
+      return historyLength ?
+             $scope.config.spelled_history[historyLength - 1] :
+             '';
+    };
+
+
+    /**
+     *
+     */
+    $scope.spellPseudoRandomWord = function() {
+      if (!$scope.config.words.length) {
+        console.warning('words db not loaded yet...');
+      }
+      var randomWord = Math.floor(Math.random() * $scope.config.words.length);
+      $scope.fingerSpellWord($scope.config.words[randomWord]);
+    };
+
+    /**
      * Updates AngularJS UI models to visuall spell the word, {@code toSpell}
      * at {@code $scope.config.letter_delay} seconds per letter.
      *
@@ -79,6 +107,8 @@ angular.module('spellApp')
       if (!toSpell.match(/^[a-z]*$/i)) {
         return;
       }
+      // Save for later "previous" features.
+      $scope.config.spelled_history.push(toSpell);
 
       if ($scope.delay) {
         $timeout.cancel($scope.delay);
@@ -88,7 +118,7 @@ angular.module('spellApp')
        * @param {string|undefined} letter
        */
       var fingerSpell = function(letter) {
-        $scope.config.active_sign = letter || '';
+        $scope.config.active_sign = String(letter || '').toLowerCase();
       };
 
       /**
@@ -111,5 +141,5 @@ angular.module('spellApp')
     };
 
     // kick off example
-    $scope.fingerSpellWord($scope.config.to_spell);
+    $scope.fingerSpellWord(DEFAULT_TO_SPELL);
   });
