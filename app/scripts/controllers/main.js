@@ -23,12 +23,41 @@ var DEFAULT_LETTER_DELAY = 1;
 var FIRST_LETTER_SPEED = 0.75;
 
 
+/**
+ *
+ * @param {!angular.$http} http
+ * @param {{words: !Array.<string>}} config
+ */
+var loadWords = function(http, config) {
+  if (config.words.length) {
+    return;
+  }
+
+  var success = function(response) {
+    config.words = response.data.words;
+  };
+  var error = function(error) {
+    console.error('failed to fetch words.json', error);
+  };
+  http.get('/words.json').then(success, error);
+};
+
+
 angular.module('spellApp')
-  .controller('MainCtrl', function ($scope, $timeout) {
+  .controller('MainCtrl', function ($http, $scope, $timeout) {
     $scope.config = {
       letter_delay: DEFAULT_LETTER_DELAY,
-      to_spell: DEFAULT_TO_SPELL
+      to_spell: DEFAULT_TO_SPELL,
+      /**
+       * Free database of Words fetched from
+       * http://www.giwersworld.org/computers/linux/common-words.phtml
+       *
+       * @type{!Array.<string>}
+       */
+      words: []
     };
+
+    loadWords($http, $scope.config);
 
     /**
      * @type {!angular.Promise}
