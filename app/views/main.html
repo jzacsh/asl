@@ -2,6 +2,14 @@
   <pre class="debug">DEBUG INFO:<br />{{config | json}}</pre>
 
   <div class="cropper">
+     <label>
+       <button class="btn btn-info"
+               ng:show="config.spelled_history.length"
+               ng:click="fingerSpellWord(getLastWord())">
+         Re&ndash;spell
+       </button>
+       <span ng:show="respell_count">(respelled {{respell_count}} times)</span>
+     </label>
     <div class="finger-sign" title="&quot;{{config.active_sign}}&quot; sign"></div>
   </div>
 

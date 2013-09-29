@@ -50,7 +50,11 @@ angular.module('spellApp')
       to_spell: '',
       /**
        * History of words spelled in the current session.
-       * @type {!Array.<string>}
+       *
+       * Each word is represented by a key which is the spelled out word
+       * itself, and a value value which is the number of times it was spelled
+       * consecutively after first introduced.
+       * @type {!Array.<!{word: string, spelled: number}>}
        */
       spelled_history: [],
       /**
@@ -76,8 +80,31 @@ angular.module('spellApp')
     $scope.getLastWord = function() {
       var historyLength = $scope.config.spelled_history.length;
       return historyLength ?
-             $scope.config.spelled_history[historyLength - 1] :
+             $scope.config.spelled_history[historyLength - 1].word :
              '';
+    };
+
+    /**
+     * Records that {@code word} was finger-spelled.
+     *
+     * @param {string} word
+     *     Word being finger-spelled.
+     * @return {number}
+     *     Number of times {@code word} has been spelled consecutively before
+     *     this instance.
+     */
+    var recordFingerSpelling = function(word) {
+      var lastWordIndex;
+      var isRespell = $scope.getLastWord() == word;
+      if (isRespell) {
+        lastWordIndex = $scope.config.spelled_history.length - 1;
+        $scope.config.spelled_history[lastWordIndex].spelled++;
+      } else {
+        var recording = {word: word, spelled: 1};
+        lastWordIndex = $scope.config.spelled_history.push(recording) - 1;
+      }
+
+      return $scope.config.spelled_history[lastWordIndex].spelled;
     };
 
 
@@ -109,7 +136,7 @@ angular.module('spellApp')
         return;
       }
       // Save for later "previous" features.
-      $scope.config.spelled_history.push(toSpell);
+      $scope.respell_count = recordFingerSpelling(toSpell) - 1;
 
       if ($scope.delay) {
         $timeout.cancel($scope.delay);
@@ -123,13 +150,23 @@ angular.module('spellApp')
       };
 
       /**
-       * @return {!angular.Promise}
+       * @param {number} idx
+       *     The numeric index of the letter being spelled within a given word.
+       * @return {number}
+       *     The milliseconds of delay intended for {@link angular.$timeout}.
        */
-      var delaySpell = function() {
+      var getSpellDelay = function(idx) {
         var isFirstLetter = !index;
         var secondsToSpell = isFirstLetter ?
             0 : parseInt($scope.config.letter_delay, 10);
+        var milliseconds = secondsToSpell * 1000;
+        return milliseconds;
+      };
 
+      /**
+       * @return {!angular.Promise}
+       */
+      var delaySpell = function() {
         $scope.delay = $timeout(function() {
           var letterToSpell = toSpell[index++]
 
@@ -140,8 +177,9 @@ angular.module('spellApp')
           } else {
             $timeout.cancel($scope.delay);
           }
-        }, secondsToSpell * 1000);
+        }, getSpellDelay(index));
       };
+
       delaySpell(); // kick off spelling
     };
 
