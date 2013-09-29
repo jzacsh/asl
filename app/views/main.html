@@ -1,56 +1,67 @@
-<div class="asl-spell" data-asl-spell="{{config.active_sign}}">
-  <pre class="debug">DEBUG INFO:<br />{{config | json}}</pre>
+<h1 style="text-align: center;">ASL Finger Spelling</h1>
+<div class="debug">
+  <button ng:click="toggleDebug()">
+    <span ng:show="debug_visible">hide</span>
+    <span ng:hide="debug_visible">show</span>
+    debug info
+  </button>
+  <pre ng:show="debug_visible">{{config | json}}</pre>
+</div>
 
+<form class="tools primary">
+  Spell a
+  <button class="btn btn-primary"
+          ng:click="spellPseudoRandomWord()">
+    random
+  </button>
+  or
+  <input type="text"
+         name="spell"
+         placeholder="arbitrary"
+         ng:model="config.to_spell"
+         ng:submit="fingerSpellWord(config.to_spell)" />
+  <button class="btn scrn-only"
+          for="spell"
+          ng:click="fingerSpellWord(config.to_spell)">spell</button>
+  word.
+</form><!--//.tools-->
+
+<div class="asl-spell" data-asl-spell="{{config.active_sign}}">
   <div class="cropper">
-     <label>
-       <button class="btn btn-info"
-               ng:show="config.spelled_history.length"
-               ng:click="fingerSpellWord(getLastWord())">
-         Re&ndash;spell
-       </button>
-       <span ng:show="respell_count">(respelled {{respell_count}} times)</span>
-     </label>
     <div class="finger-sign" title="&quot;{{config.active_sign}}&quot; sign"></div>
   </div>
+</div><!--//.asl-spell-->
 
-  <div class="spell-form">
-    <label for="tospell">
-      <button class="btn btn-primary"
-              ng:click="spellPseudoRandomWord()">
-        random word
+<div class="tools secondary">
+  <div class="tip">
+    <span class="respell">
+      <button class="btn btn-warning icon"
+              title="Re&ndash;spell"
+              ng:show="config.spelled_history.length"
+              ng:click="fingerSpellWord(getLastWord())">
+        &#10227;
       </button>
-
-      or
-
-      <input type="text"
-             name="spell"
-             placeholder="word to spell"
-             ng:model="config.to_spell" />
-      <button class="btn"
-              type="submit"
-              for="spell"
-              ng:click="fingerSpellWord(config.to_spell)">spell</button>
-    </label>
-
-    <label for="speed">
-      seconds per letter:
-      <span class="seconds">{{config.letter_delay}}</span>
-      <input type="range"
-             name="speed"
-             step="0.25"
-             min="0.25"
-             max="10"
-             ng-model="config.letter_delay"/>
-   </label>
-
-   <hr />
-
-   <div class="tip">
-     <span class="active-word">
-       <strong>Word Being Spelled:</strong>
+      <em ng:show="respell_count"
+          title="re&ndash;spelled {{respell_count}} times">
+        {{respell_count}} x</em>
+    </span>
+    <span class="active-word">
+      <strong ng:show="config.active_sign.length">being signed:</strong>
+      <strong ng:hide="config.active_sign.length">just signed:</strong>
       <span class="instructions">(hidden)</span>
       <span class="word">{{getLastWord()}}</span>
-    <span>
-   </div>
-  </div>
-</div><!--//.asl-spell-->
+    </span>
+    <span class="clearfix"></span>
+  </div><!--//.tip-->
+
+  <label for="speed">
+    seconds per letter:
+    <span class="seconds">{{config.letter_delay}}</span>
+    <input type="range"
+           name="speed"
+           step="0.25"
+           min="0.25"
+           max="10"
+           ng-model="config.letter_delay"/>
+  </label>
+</div><!--//.tools-->

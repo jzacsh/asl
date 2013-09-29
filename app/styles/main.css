@@ -4,30 +4,51 @@ body {
   color: #333;
 }
 
+.clearfix {
+  clear: both;
+  width: 100%;
+  height: 1px;
+  visibility: hidden;
+}
+
 .debug {
   position: absolute;
   top: 0;
   left: 0;
-  overflow-x: hidden;
   overflow-y: auto;
-  max-height: 90%;
+  max-height: 50%;
+  width: inherit;
+  text-align: left;
+}
+
+.debug button {
+  text-transform: uppercase;
+}
+
+.debug pre {
   outline: 1px solid pink;
+  box-shadow: #000 3px 4px 7px;
+}
+
+h1 {
+  font-size: 2em;
 }
 
 .container {
   height: 300px;
+  width: 300px;
+  margin: 0 auto 0 auto;
+  text-align: center;
 }
 
 .asl-spell {
-  margin: 50px auto 0 auto;
   font-size: 18px;
+  height: 100%;
   font-weight: 200;
   line-height: 30px;
   background-color: #eee;
   border-radius: 6px;
-  padding: 60px;
-  height: 100%;
-  width: 300px;
+  width: 100%;
 }
 
 .asl-spell .cropper {
@@ -37,74 +58,66 @@ body {
   margin: 0 auto;
 }
 
-.spell-form {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1ex;
+.tools .icon {
+  font-size: 1.25em;
 }
 
-.spell-form .tip  {
-  margin-top: 2em;
-}
-
-.spell-form .active-word  {
-  text-align: center;
-}
-
-.spell-form .active-word .word,
-.spell-form .active-word .word {
-  visibility: hidden;
-}
-
-.spell-form .active-word .instructions,
-.spell-form .active-word .instructions {
-  font-style: italic;
-  font-size: 1.25ex;
-  visibility: visible;
-}
-
-.spell-form .active-word:hover .word,
-.spell-form .active-word:focus .word {
-  visibility: visible;
-}
-
-.spell-form .active-word:hover .instructions,
-.spell-form .active-word:focus .instructions {
-  visibility: hidden;
-}
-
-.spell-form label {
+.tools .tip  {
+  clear: both;
   width: 100%;
 }
 
-.spell-form [for="tospell"] input {
-  width: 70%;
+.tip .respell {
+  float: left;
 }
 
-.spell-form label[for="speed"] {
+.tip .active-word  {
+  float: right;
+  line-height: 2.5em;
+}
+
+.tools .active-word  {
+  text-align: center;
+}
+
+.tools .active-word .word,
+.tools .active-word .word {
+  visibility: hidden;
+}
+
+.tools .active-word .instructions,
+.tools .active-word .instructions {
+  font-style: italic;
+  font-size: 1.25ex;
+  visibility: visible;
+}
+
+.tools .active-word:hover .word,
+.tools .active-word:focus .word {
+  visibility: visible;
+}
+
+.tools .active-word:hover .instructions,
+.tools .active-word:focus .instructions {
+  visibility: hidden;
+}
+
+.tools label[for="speed"] {
   font-size: 1.25ex;
   font-style: italic;
 }
 
-.spell-form label[for="speed"] .seconds {
+.tools label[for="speed"] .seconds {
   text-align: right;
   font-weight: bold;
   font-style: none;
 }
 
-.spell-form [for="speed"] input {
+.tools [for="speed"] input {
   width: 50%;
   min-width: 50%;
   max-width: 50%;
   float: right;
-}
-
-h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-
 }
 
 [data-asl-spell] .finger-sign {
