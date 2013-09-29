@@ -156,9 +156,9 @@ angular.module('spellApp')
        *     The milliseconds of delay intended for {@link angular.$timeout}.
        */
       var getSpellDelay = function(idx) {
-        var isFirstLetter = !index;
+        var isFirstLetter = !idx;
         var secondsToSpell = isFirstLetter ?
-            0 : parseInt($scope.config.letter_delay, 10);
+            0 : parseFloat($scope.config.letter_delay, 10);
         var milliseconds = secondsToSpell * 1000;
         return milliseconds;
       };
