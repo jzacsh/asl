@@ -126,6 +126,10 @@ angular.module('spellApp')
        * @return {!angular.Promise}
        */
       var delaySpell = function() {
+        var isFirstLetter = !index;
+        var secondsToSpell = isFirstLetter ?
+            0 : parseInt($scope.config.letter_delay, 10);
+
         $scope.delay = $timeout(function() {
           var letterToSpell = toSpell[index++]
 
@@ -136,7 +140,7 @@ angular.module('spellApp')
           } else {
             $timeout.cancel($scope.delay);
           }
-        }, parseInt($scope.config.letter_delay, 10) * 1000);
+        }, secondsToSpell * 1000);
       };
       delaySpell(); // kick off spelling
     };
