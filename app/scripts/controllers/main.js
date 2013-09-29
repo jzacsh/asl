@@ -82,7 +82,8 @@ angular.module('spellApp')
 
 
     /**
-     *
+     * Calls {@link $scope.fingerSpellWord} on a pseudo random word from
+     * {@link $scope.config.words}.
      */
     $scope.spellPseudoRandomWord = function() {
       if (!$scope.config.words.length) {
