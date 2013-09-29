@@ -6,12 +6,14 @@
   </div>
 
   <div class="spell-form">
-    <button class="btn btn-primary"
-            ng:click="spellPseudoRandomWord()">
-      random word
-    </button>
-
     <label for="tospell">
+      <button class="btn btn-primary"
+              ng:click="spellPseudoRandomWord()">
+        random word
+      </button>
+
+      or
+
       <input type="text"
              name="spell"
              placeholder="word to spell"
@@ -32,11 +34,14 @@
              max="10"
              ng-model="config.letter_delay"/>
    </label>
-   <button class="btn"
+   <button class="btn btn-info"
            ng:show="config.spelled_history.length"
            ng:click="fingerSpellWord(getLastWord())">
      Replay Word
    </button>
+
+   <hr />
+
    <div class="tip">
      <h3>Word Being Spelled:</h3>
      <p class="active-word">
