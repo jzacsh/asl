@@ -35,7 +35,6 @@ h1 {
 }
 
 .container {
-  height: 300px;
   width: 300px;
   margin: 0 auto 0 auto;
   text-align: center;
@@ -43,7 +42,7 @@ h1 {
 
 .asl-spell {
   font-size: 18px;
-  height: 100%;
+  height: 300px;
   font-weight: 200;
   line-height: 30px;
   background-color: #eee;
@@ -56,6 +55,25 @@ h1 {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+}
+
+.asl-spell .cropper .respell {
+  position: relative;
+  top: 40%;
+}
+
+form.tools.primary button {
+  padding: .5ex;
+  line-height: 1.25em;
+}
+
+form.tools.primary > * {
+  display: inline;
+}
+
+form.tools.primary input[name="spell"] {
+  width: 4em;
+  margin-bottom: 0px;
 }
 
 .tools .icon {

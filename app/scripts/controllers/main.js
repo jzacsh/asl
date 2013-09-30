@@ -68,6 +68,14 @@ angular.module('spellApp')
 
     loadWords($http, $scope.config);
 
+    /**
+     * @return {boolean}
+     */
+    $scope.signInProgress = function() {
+      return !!($scope.config.active_sign &&
+                $scope.config.active_sign.length);
+    };
+
     $scope.debug_visible = false;
     $scope.toggleDebug = function() {
       $scope.debug_visible = !$scope.debug_visible;

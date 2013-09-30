@@ -20,14 +20,17 @@
          placeholder="arbitrary"
          ng:model="config.to_spell"
          ng:submit="fingerSpellWord(config.to_spell)" />
-  <button class="btn scrn-only"
-          for="spell"
-          ng:click="fingerSpellWord(config.to_spell)">spell</button>
   word.
 </form><!--//.tools-->
 
 <div class="asl-spell" data-asl-spell="{{config.active_sign}}">
   <div class="cropper">
+    <button class="respell btn btn-warning icon"
+            title="Re&ndash;spell"
+            ng:hide="signInProgress()"
+            ng:click="fingerSpellWord(getLastWord())">
+      &#10227;
+    </button>
     <div class="finger-sign" title="&quot;{{config.active_sign}}&quot; sign"></div>
   </div>
 </div><!--//.asl-spell-->
@@ -35,8 +38,9 @@
 <div class="tools secondary">
   <div class="tip">
     <span class="respell">
-      <button class="btn btn-warning icon"
+      <button class="btn icon"
               title="Re&ndash;spell"
+              ng:class="{ 'btn-mini': !signInProgress(), 'btn-warning': signInProgress() }"
               ng:show="config.spelled_history.length"
               ng:click="fingerSpellWord(getLastWord())">
         &#10227;
@@ -46,8 +50,8 @@
         {{respell_count}} x</em>
     </span>
     <span class="active-word">
-      <strong ng:show="config.active_sign.length">being signed:</strong>
-      <strong ng:hide="config.active_sign.length">just signed:</strong>
+      <strong ng:show="signInProgress()">being signed:</strong>
+      <strong ng:hide="signInProgress()">just signed:</strong>
       <span class="instructions">(hidden)</span>
       <span class="word">{{getLastWord()}}</span>
     </span>
