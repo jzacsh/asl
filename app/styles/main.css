@@ -85,17 +85,13 @@ h1 {
   width: 100%;
 }
 
-.tip .respell {
-  float: left;
-}
-
 .tip .active-word  {
-  float: right;
   line-height: 2.5em;
+  margin-left: 1em;
 }
 
-.tools .active-word  {
-  text-align: center;
+.tools.secondary .tip {
+  text-align: left;
 }
 
 .tools .active-word .word,
@@ -120,22 +116,28 @@ h1 {
   visibility: hidden;
 }
 
-.tools label[for="speed"] {
-  font-size: 1.25ex;
+.tools.secondary {
   font-style: italic;
 }
 
-.tools label[for="speed"] .seconds {
-  text-align: right;
-  font-weight: bold;
-  font-style: none;
+.history {
+  font-size: 1.25ex;
 }
 
 .tools [for="speed"] input {
-  width: 50%;
-  min-width: 50%;
-  max-width: 50%;
-  float: right;
+  font-weight: bold;
+  max-width: 3em;
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+}
+
+/* ng{Show,Hide} pairing */
+.jzvisible {
+  visibility: visible;
+}
+.jzinvisible {
+  visibility: hidden;
 }
 
 [data-asl-spell] .finger-sign {

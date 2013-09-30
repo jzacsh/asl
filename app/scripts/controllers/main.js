@@ -156,7 +156,6 @@ spellAppModule.controller('MainCtrl', function($http, $log, $scope, $timeout, $w
     return $scope.config.spelled_history[lastWordIndex].spelled;
   };
 
-
   /**
    * Calls {@link $scope.fingerSpellWord} on a pseudo random word from
    * {@link $scope.config.words}.

@@ -11,6 +11,7 @@
 <div class="tools primary">
   Spell a
   <button class="btn btn-primary"
+          tabindex="2"
           ng:click="spellPseudoRandomWord()">
     random
   </button>
@@ -18,6 +19,7 @@
   <form ng:submit="fingerSpellWord(config.to_spell)">
     <input type="text"
            name="spell"
+           tabindex="1"
            placeholder="arbitrary"
            ng:model="config.to_spell" />
    </form>
@@ -47,13 +49,13 @@
               ng:click="fingerSpellWord(getLastWord())">
         &#10227;
       </button>
-      <em ng:show="respell_count"
+      <em ng:class="{jzvisible: respell_count, jzinvisible: !respell_count}"
           title="re&ndash;spelled {{respell_count}} times">
         {{respell_count}} x</em>
     </span>
     <span class="active-word">
-      <strong ng:show="signInProgress()">being signed:</strong>
-      <strong ng:hide="signInProgress()">just signed:</strong>
+      <strong ng:show="signInProgress()">Being signed:</strong>
+      <strong ng:hide="signInProgress()">Just signed:</strong>
       <span class="instructions">(hidden)</span>
       <span class="word">{{getLastWord()}}</span>
     </span>
@@ -61,13 +63,16 @@
   </div><!--//.tip-->
 
   <label for="speed">
-    seconds per letter:
-    <span class="seconds">{{config.letter_delay}}</span>
-    <input type="range"
+    <input type="number"
            name="speed"
            step="0.25"
            min="0.25"
            max="10"
            ng-model="config.letter_delay"/>
+    seconds per letter
   </label>
+  <p class="history"
+     ng:show="config.spelled_history.length">
+    {{config.spelled_history.length}} words spelled.
+  </p>
 </div><!--//.tools-->
