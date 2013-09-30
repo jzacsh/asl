@@ -8,20 +8,21 @@
   <pre ng:show="debug_visible">{{config | json}}</pre>
 </div>
 
-<form class="tools primary">
+<div class="tools primary">
   Spell a
   <button class="btn btn-primary"
           ng:click="spellPseudoRandomWord()">
     random
   </button>
   or
-  <input type="text"
-         name="spell"
-         placeholder="arbitrary"
-         ng:model="config.to_spell"
-         ng:submit="fingerSpellWord(config.to_spell)" />
+  <form ng:submit="fingerSpellWord(config.to_spell)">
+    <input type="text"
+           name="spell"
+           placeholder="arbitrary"
+           ng:model="config.to_spell" />
+   </form>
   word.
-</form><!--//.tools-->
+</div><!--//.tools-->
 
 <div class="asl-spell" data-asl-spell="{{config.active_sign}}">
   <div class="cropper">

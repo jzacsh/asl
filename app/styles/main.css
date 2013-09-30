@@ -62,16 +62,16 @@ h1 {
   top: 40%;
 }
 
-form.tools.primary button {
+.tools.primary button {
   padding: .5ex;
   line-height: 1.25em;
 }
 
-form.tools.primary > * {
+.tools.primary > * {
   display: inline;
 }
 
-form.tools.primary input[name="spell"] {
+.tools.primary input[name="spell"] {
   width: 4em;
   margin-bottom: 0px;
 }
