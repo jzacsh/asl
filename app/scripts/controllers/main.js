@@ -13,14 +13,7 @@ var DEFAULT_TO_SPELL = 'unicorn';
  *
  * @type {number}
  */
-var DEFAULT_LETTER_DELAY = 1;
-
-
-/**
- * @see {@link DEFAULT_LETTER_DELAY}
- * @type {number}
- */
-var FIRST_LETTER_SPEED = 0.75;
+var DEFAULT_LETTER_DELAY = 0.5;
 
 
 /**
