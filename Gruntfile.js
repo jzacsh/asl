@@ -251,7 +251,11 @@ module.exports = function (grunt) {
           src: [
             '*.{json,ico,png,txt}',
             '.htaccess',
-            'bower_components/**/*',
+
+            // TODO(zacsh): Not needed in prod, consider dropping use bower
+            // altogether.
+            // 'bower_components/**/*',
+
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
           ]
