@@ -314,15 +314,14 @@ module.exports = function (grunt) {
       }
     },
     manifest: {
-      src: [
-        '<%= yeoman.dist %>/{,*/}*.min.js',
-        '<%= yeoman.dist %>/{,*/}*.html',
-        '<%= yeoman.dist %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-      ],
-      dest: '<%= yeoman.dist %>/asl-jzacsh-com.appcache',
-      options: {
-        timestamp: false,
-        hash: true
+      generate: {
+        options: {
+          basePath: '<%= yeoman.dist %>',
+          hash: true,
+          timestamp: true
+        },
+        dest: '<%= yeoman.dist %>/asl-jzacsh-com.appcache',
+        src: '{,*/}*.{html,min.js,png,jpg,jpeg,gif,webp,svg}',
       }
     }
   });
