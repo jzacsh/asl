@@ -75,9 +75,11 @@ var keyupHandler = function(ctrlScope, event) {
 
 var spellAppModule = angular.module('spellApp');
 
-spellAppModule.controller('MainCtrl', function($http, $log, $scope, $timeout, $window) {
+spellAppModule.controller('MainCtrl', function(
+      $http, $location, $log, $scope, $timeout, $window) {
   $window.addEventListener(
       'keyup', function(event) { keyupHandler($scope, event); });
+
 
   /**
    * @type {!Object.<string,string>} UI Configuration
@@ -103,6 +105,10 @@ spellAppModule.controller('MainCtrl', function($http, $log, $scope, $timeout, $w
     words: []
   };
   loadWords($http, $scope.config);
+
+  /** @type {boolean} */
+  $scope.is_likely_prod = $location.host().match(/^asl/);  // asl.jzacsh.com
+
 
   /**
    * @return {boolean}
