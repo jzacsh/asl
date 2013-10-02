@@ -22,6 +22,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.loadNpmTasks('grunt-manifest');
+
   try {
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
   } catch (e) {}
@@ -312,6 +314,14 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    manifest: {
+      src: '<%= yeoman.dist %>/*',
+      dest: 'asl-jzacsh-com.appcache',
+      options: [
+        timestamp: false,
+        hash: true
+      ]
     }
   });
 
@@ -347,6 +357,7 @@ module.exports = function (grunt) {
     'copy:dist',
     'cdnify',
     'ngmin',
+    'manifest',
     'cssmin',
     'uglify',
     'rev',
