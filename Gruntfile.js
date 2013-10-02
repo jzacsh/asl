@@ -326,7 +326,7 @@ module.exports = function (grunt) {
           hash: true,
           timestamp: true
         },
-        dest: '<%= yeoman.dist %>/asl-jzacsh-com.appcache',
+        dest: '<%= yeoman.dist %>/asl-jzacsh-com.manifest',
         src: '{,.}{,*/}*{,/**}{html,{min,}.js,css,png,jpg,jpeg,gif,webp,svg}'
       }
     }
