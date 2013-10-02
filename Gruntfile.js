@@ -255,6 +255,8 @@ module.exports = function (grunt) {
             // TODO(zacsh): Not needed in prod, consider dropping use bower
             // altogether.
             // 'bower_components/**/*',
+            'bower_components/angular/angular.js',
+            'bower_components/jquery/jquery.js',
 
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
@@ -296,11 +298,6 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
-      }
-    },
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
       }
     },
     ngmin: {
@@ -365,7 +362,6 @@ module.exports = function (grunt) {
     'autoprefixer',
     'concat',
     'copy:dist',
-    'cdnify',
     'ngmin',
     'cssmin',
     'uglify',
