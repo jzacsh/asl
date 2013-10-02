@@ -148,7 +148,7 @@ h1 {
 [data-asl-spell] .finger-sign {
   width: 300px;
   height: 100%;
-  background-image: url('/img/asl_alphabet.svg');
+  background-image: url('/image/asl_alphabet.svg');
   background-repeat: no-repeat;
   background-size: 750%;
   overflow: hidden;
