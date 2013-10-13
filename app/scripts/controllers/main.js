@@ -1,22 +1,15 @@
 'use strict';
 
 /**
- * Word to be finger spelled.
+ * First word to be finger spelled, as an example of the app on page load.
  *
  * @type {string}
  */
-var DEFAULT_TO_SPELL = 'unicorn';
+var EXAMPLE_FINGERSPELL = 'unicorn';
 
 
 /**
- * Seconds each letter should be spelled for.
- *
- * @type {number}
- */
-var DEFAULT_LETTER_DELAY = 0.5;
-
-
-/**
+ * Loads and caches list of commonly used English words.
  *
  * @param {!angular.$http} http
  * @param {{words: !Array.<string>}} config
@@ -37,6 +30,7 @@ var loadWords = function(http, config) {
 
 
 /**
+ * @param {string} nodeName
  * @return {boolean}
  */
 var isActionableNode = function(nodeName) {
@@ -73,6 +67,7 @@ var keyupHandler = function(ctrlScope, event) {
 };
 
 
+/** @type {!angular.Module} */
 var spellAppModule = angular.module('spellApp');
 
 spellAppModule.controller('MainCtrl', function(
@@ -85,7 +80,12 @@ spellAppModule.controller('MainCtrl', function(
    * @type {!Object.<string,string>} UI Configuration
    */
   $scope.config = {
-    letter_delay: DEFAULT_LETTER_DELAY,
+    /**
+     * Seconds each letter should be spelled for.
+     *
+     * @type {number}
+     */
+    letter_delay: 0.5,
     to_spell: '',
     /**
      * History of words spelled in the current session.
@@ -246,5 +246,5 @@ spellAppModule.controller('MainCtrl', function(
   };
 
   // kick off example
-  $scope.fingerSpellWord(DEFAULT_TO_SPELL);
+  $scope.fingerSpellWord(EXAMPLE_FINGERSPELL);
 });
