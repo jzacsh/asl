@@ -9,12 +9,13 @@ Flashcard style webapp to help me learn American Sign Language (ASL), for fun.
 I'm currently a beginner.
 
 ## Feature Complete?
-Currently it only handles finger-spelling. I'm slowly working on the following:
-+ Input of new signs (via webcam-to-autoGIF functionality)
-+ Storing settings per-device (eg: speed, or even progress/history)
-+ Storing new signs (ie maybe first feature mentioned above should only be for
-  personal progress)
+Currently only handles finger-spelling, but working on ability to any new sign.
 
-## TODOs In Order of Priority
+### TODOs In Order of Priority
+Specifically, I'm slowly working on the following:
 + Fill in e2e test to cover current fingerspelling only functionality
++ Storing settings per-device _(eg: speed, or even progress/history)_
 + Update config to either: preferrable jshintrc, or jscompiler instead
++ Storing new signs _(ie maybe "new signs" feature should only be for
+  personal progress)_
++ Input of new signs _(via webcam-to-autoGIF functionality)_
