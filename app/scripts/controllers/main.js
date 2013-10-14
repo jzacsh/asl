@@ -3,6 +3,7 @@
 
 
 /**
+ * Main controller for ASL practice.
  *
  * @param {!angular.$http} $http
  * @param {!angular.$location} $location
