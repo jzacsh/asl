@@ -1,22 +1,22 @@
 <h1 style="text-align: center;">ASL Finger Spelling</h1>
-<div class="debug" ng:hide="is_likely_prod">
-  <button ng:click="toggleDebug()">
-    <span ng:show="debug_visible">hide</span>
-    <span ng:hide="debug_visible">show</span>
+<div class="debug" ng:hide="config.is_likely_prod">
+  <button ng:click="Ctrl.toggleDebug()">
+    <span ng:show="config.debug_visible">hide</span>
+    <span ng:hide="config.debug_visible">show</span>
     debug info
   </button>
-  <pre ng:show="debug_visible">{{config | json}}</pre>
+  <pre ng:show="config.debug_visible">{{config | json}}</pre>
 </div>
 
 <div class="tools primary">
   Spell a
   <button class="btn btn-primary"
           tabindex="2"
-          ng:click="spellPseudoRandomWord()">
+          ng:click="Ctrl.spellPseudoRandomWord()">
     random
   </button>
   or
-  <form ng:submit="fingerSpellWord(config.to_spell)">
+  <form ng:submit="Ctrl.fingerSpellWord(config.to_spell)">
     <input type="text"
            name="spell"
            tabindex="1"
@@ -31,8 +31,8 @@
   <div class="cropper">
     <button class="respell btn btn-warning icon"
             title="Re&ndash;spell"
-            ng:hide="signInProgress()"
-            ng:click="fingerSpellWord(getLastWord())">
+            ng:hide="Ctrl.signInProgress()"
+            ng:click="Ctrl.fingerSpellWord(Ctrl.getLastWord())">
       &#10227;
     </button>
     <div class="finger-sign"></div>
@@ -44,20 +44,20 @@
     <span class="respell">
       <button class="btn icon"
               title="Re&ndash;spell"
-              ng:class="{ 'btn-mini': !signInProgress(), 'btn-warning': signInProgress() }"
+              ng:class="{ 'btn-mini': !Ctrl.signInProgress(), 'btn-warning': Ctrl.signInProgress() }"
               ng:show="config.spelled_history.length"
-              ng:click="fingerSpellWord(getLastWord())">
+              ng:click="Ctrl.fingerSpellWord(Ctrl.getLastWord())">
         &#10227;
       </button>
-      <em ng:class="{jzvisible: respell_count, jzinvisible: !respell_count}"
-          title="re&ndash;spelled {{respell_count}} times">
-        {{respell_count}} x</em>
+      <em ng:class="{jzvisible: config.respell_count, jzinvisible: !config.respell_count}"
+          title="re&ndash;spelled {{config.respell_count}} times">
+        {{config.respell_count}} x</em>
     </span>
     <span class="active-word">
-      <strong ng:show="signInProgress()">Being signed:</strong>
-      <strong ng:hide="signInProgress()">Just signed:</strong>
+      <strong ng:show="Ctrl.signInProgress()">Being signed:</strong>
+      <strong ng:hide="Ctrl.signInProgress()">Just signed:</strong>
       <span class="instructions">(hidden)</span>
-      <span class="word">{{getLastWord()}}</span>
+      <span class="word">{{Ctrl.getLastWord()}}</span>
     </span>
     <span class="clearfix"></span>
   </div><!--//.tip-->
