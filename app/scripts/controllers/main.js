@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * First word to be finger spelled, as an example of the app on page load.
- *
- * @type {string}
- */
-var EXAMPLE_FINGERSPELL = 'unicorn';
-
 
 
 /**
@@ -73,10 +66,18 @@ var Controller = function(
   $window.addEventListener('keyup', angular.bind(this, this.keyupHandler));
 
   // Kick off an example, to show what this app can do.
-  this.fingerSpellWord(EXAMPLE_FINGERSPELL);
+  this.fingerSpellWord(Controller.EXAMPLE_FINGERSPELL);
 
   return this.scope_.Ctrl = this;
 };
+
+
+/**
+ * An example word, perfect for demonstrating finger spelling.
+ *
+ * @type {string}
+ */
+Controller.EXAMPLE_FINGERSPELL = 'unicorn';
 
 
 /**
