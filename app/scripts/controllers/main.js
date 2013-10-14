@@ -263,7 +263,7 @@ Controller.prototype.spellPseudoRandomWord = function() {
  */
 Controller.prototype.fingerSpellWord = function(toSpell) {
   // Sanity check
-  if (!toSpell || !toSpell.match(/^[a-z]*$/i)) {
+  if (!toSpell || !toSpell.match(/^[a-z0-9]*$/i)) {
     return;
   }
   this.signIndex_ = 0;  // reset

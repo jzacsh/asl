@@ -19,3 +19,4 @@ Specifically, I'm slowly working on the following:
 + Storing new signs _(ie maybe "new signs" feature should only be for
   personal progress)_
 + Input of new signs _(via webcam-to-autoGIF functionality)_
++ handle finger-spelling for numbers 10 and up
