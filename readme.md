@@ -17,6 +17,7 @@ Currently only handles finger-spelling, but working on ability to any new sign.
 
 ### TODOs In Order of Priority
 Specifically, I'm slowly working on the following:
++ Enable touch-friendy buttons to change fingerspell speed
 + Fill in e2e test to cover current fingerspelling only functionality
 + Storing settings per-device _(eg: speed, or even progress/history)_
 + Update config to either: preferrable jshintrc, or jscompiler instead
