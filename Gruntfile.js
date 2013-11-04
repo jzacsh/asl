@@ -332,7 +332,10 @@ module.exports = function (grunt) {
         options: {
           basePath: '<%= yeoman.dist %>',
           hash: true,
-          timestamp: true
+          timestamp: true,
+          process: function(item) {
+             return grunt.file.isDir('<%= yeoman.dist %>/' + item) ? '' : item;
+          }
         },
         dest: '<%= yeoman.dist %>/asl-jzacsh-com.manifest',
         src: '**'
