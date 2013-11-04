@@ -83,10 +83,12 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
+          port: 8000,
           middleware: function (connect) {
             return [
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'test')
+              mountFolder(connect, 'test'),
+              mountFolder(connect, yeomanConfig.dist)
             ];
           }
         }
@@ -296,6 +298,11 @@ module.exports = function (grunt) {
       ]
     },
     karma: {
+      e2e: {
+        configFile: 'karma-e2e.conf.js',
+        proxies: { '/': 'http://localhost:<%= connect.test.options.port %>' },
+        singleRun: true
+      },
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
@@ -335,7 +342,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
+      return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
 
     grunt.task.run([
