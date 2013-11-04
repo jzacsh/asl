@@ -91,6 +91,7 @@ Controller.UiConfig = {
    * @type {boolean}
    */
   is_likely_prod: true,
+
   /**
    * Whether debugging contents should be visible.
    * @type {boolean}
@@ -103,6 +104,18 @@ Controller.UiConfig = {
    * @type {number}
    */
   letter_delay: 0.5,
+
+  /**
+   * Intervals with which {@code letter_delay} should be modified.
+   * @type {number}
+   */
+  letter_delay_step: 0.25,
+
+  /**
+   * Maximum sensible {@code letter_delay}.
+   * @type {number}
+   */
+  letter_delay_max: 10,
 
   /**
    * Word a finger-spell was requested for. 
@@ -127,6 +140,42 @@ Controller.UiConfig = {
    * @type {number}
    */
   respell_count: 0
+};
+
+
+/**
+ * Increases the speed of fingerspelling, a single interval, if possible.
+ */
+Controller.prototype.increaseLetterDelay = function() {
+  if (this.increaseLetterDelayPossible()) {
+    this.scope_.config.letter_delay += this.scope_.config.letter_delay_step;
+  }
+};
+
+
+/** @return {boolean} */
+Controller.prototype.increaseLetterDelayPossible = function() {
+  return (this.scope_.config.letter_delay +
+          this.scope_.config.letter_delay_step) <= this.scope_.
+         config.letter_delay_max;
+};
+
+
+/**
+ * Decreases the speed of fingerspelling, a single interval, if possible.
+ */
+Controller.prototype.decreaseLetterDelay = function() {
+  if (this.decreaseLetterDelayPossible()) {
+    this.scope_.config.letter_delay -= this.scope_.config.letter_delay_step;
+  }
+};
+
+
+/** @return {boolean} */
+Controller.prototype.decreaseLetterDelayPossible = function() {
+  return (this.scope_.config.letter_delay -
+          this.scope_.config.letter_delay_step) >= this.scope_.
+         config.letter_delay_step;
 };
 
 

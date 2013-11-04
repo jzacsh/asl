@@ -124,6 +124,36 @@ h1 {
   font-size: 1.25ex;
 }
 
+.asl-txt-img:disabled span {
+  opacity: 0.4;
+}
+
+.tools [for="speed"] .asl-txt-img {
+  padding: 0;
+}
+
+.tools [for="speed"] .asl-txt-img,
+.tools [for="speed"] .asl-txt-img.slower span {
+  width: 40px;
+  height: 20px;
+}
+
+.tools [for="speed"] .asl-txt-img span {
+  background-image: url('/images/icon_slow-tortoise-fast-hare.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 170%;
+  display: block;
+}
+
+.tools [for="speed"] .asl-txt-img.slower span {
+  background-position: 3px 0;
+}
+
+.tools [for="speed"] .asl-txt-img.faster span {
+  background-position: -34px 0;
+}
+
 .tools [for="speed"] input {
   font-weight: bold;
   max-width: 3em;

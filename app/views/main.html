@@ -63,13 +63,23 @@
   </div><!--//.tip-->
 
   <label for="speed">
+    <button asl-txt-img
+            class="btn slower"
+            ng:click="Ctrl.increaseLetterDelay()"
+            ng:disable="!Ctrl.increaseLetterDelayPossible()">
+      slower fingerspelling</button>
     <input type="number"
            name="speed"
-           step="0.25"
-           min="0.25"
-           max="10"
+           step="{{config.letter_delay_step}}"
+           min="{config.letter_delay_step}}"
+           max="{{letter_delay_max}}"
            ng-model="config.letter_delay"/>
     seconds per letter
+    <button asl-txt-img
+            class="btn faster"
+            ng:click="Ctrl.decreaseLetterDelay()"
+            ng:disable="!Ctrl.decreaseLetterDelayPossible()">
+      faster fingerspelling</button>
   </label>
   <p class="history"
      ng:show="config.spelled_history.length">
