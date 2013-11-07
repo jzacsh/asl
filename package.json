@@ -21,7 +21,7 @@
     "grunt-contrib-watch": "~0.5.2",
     "grunt-google-cdn": "~0.2.0",
     "grunt-karma": "~0.6.2",
-    "grunt-manifest": "~0.4.0",
+    "grunt-manifest": "https://github.com/jzacsh/grunt-manifest/archive/master.tar.gz",
     "grunt-ngmin": "~0.0.2",
     "grunt-open": "~0.2.0",
     "grunt-rev": "~0.1.0",
