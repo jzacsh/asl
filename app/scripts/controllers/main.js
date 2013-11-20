@@ -14,7 +14,7 @@
  * @constructor
  */
 var Controller = function(
-      $http, $location, $log, $scope, $timeout, $window) {
+    $http, $location, $log, $scope, $timeout, $window) {
 
   /** @private {!angular.$http} */
   this.http_ = $http;
@@ -388,7 +388,4 @@ Controller.prototype.renderSpellRecursive_ = function(toSpell) {
 };
 
 
-/** @type {!angular.Module} */
-angular.
-    module('spellApp').
-    controller('MainCtrl', Controller);
+angular.module('spellApp').controller('MainCtrl', Controller);
