@@ -3,7 +3,7 @@
 
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
-var mountFolder = function (connect, dir) {
+var mountFolder = function(connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
 
@@ -13,7 +13,7 @@ var mountFolder = function (connect, dir) {
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
@@ -72,7 +72,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          middleware: function (connect) {
+          middleware: function(connect) {
             return [
               lrSnippet,
               mountFolder(connect, '.tmp'),
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
       test: {
         options: {
           port: 8000,
-          middleware: function (connect) {
+          middleware: function(connect) {
             return [
               mountFolder(connect, '.tmp'),
               mountFolder(connect, 'test'),
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          middleware: function (connect) {
+          middleware: function(connect) {
             return [
               mountFolder(connect, yeomanConfig.dist)
             ];
@@ -258,6 +258,7 @@ module.exports = function (grunt) {
             // TODO(zacsh): Not needed in prod, consider dropping use bower
             // altogether.
             // 'bower_components/**/*',
+
             'bower_components/angular/angular.js',
             'bower_components/jquery/jquery.js',
 
@@ -341,7 +342,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('server', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
