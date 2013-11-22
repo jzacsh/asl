@@ -388,4 +388,14 @@ Controller.prototype.renderSpellRecursive_ = function(toSpell) {
 };
 
 
-angular.module('spellApp').controller('MainCtrl', Controller);
+angular.
+    module('spellApp').
+    controller('MainCtrl', [
+      '$http',
+      '$location',
+      '$log',
+      '$scope',
+      '$timeout',
+      '$window',
+      Controller
+    ]);
