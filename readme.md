@@ -13,4 +13,4 @@ Flashcard style webapp to help me learn American Sign Language (ASL), for fun.
 I'm currently a beginner.
 
 ## Feature Complete?
-Currently only handles finger-spelling, but working on ability to any new sign. See [issues](../../issues) for more.
+No. See [list of issues](../../issues) for plans and bug fixes.
