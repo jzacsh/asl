@@ -229,9 +229,9 @@ Controller.prototype.getRandomWordsToSpell_ = function() {
   var success = angular.bind(this, function(response) {
     this.randomWords_ = response.data.words;
   });
-  var error = function(error) {
+  var error = angular.bind(this, function(error) {
     this.log_.error('failed to fetch words.json', error);
-  };
+  });
   this.http_.get('/words.json').then(success, error);
 };
 
