@@ -16,5 +16,5 @@ I'm currently a beginner.
 No. See [list of issues](../../issues) for plans and bug fixes.
 
 ## Disclaimer & License
-See [LICENSE](). Note: this is **not** a Google product. This is just a fun, personal
+See [LICENSE](LICENSE). Note: this is **not** a Google product. This is just a fun, personal
 weekend project I whipped up when I got frustrated trying to learn to finger-spell.
