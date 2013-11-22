@@ -14,3 +14,8 @@ I'm currently a beginner.
 
 ## Feature Complete?
 No. See [list of issues](../../issues) for plans and bug fixes.
+
+
+## Disclaimer
+This is **not** a Google product. This is just a fun, personal
+weekend project I whipped up when I got frustrated trying to learn to finger-spell.
