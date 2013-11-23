@@ -4,13 +4,6 @@ body {
   color: #333;
 }
 
-.clearfix {
-  clear: both;
-  width: 100%;
-  height: 1px;
-  visibility: hidden;
-}
-
 .debug {
   position: absolute;
   top: 0;
@@ -32,6 +25,8 @@ body {
 
 h1 {
   font-size: 2em;
+  margin-top: 1em;
+  margin-bottom: 1ex;
 }
 
 .container {
@@ -48,6 +43,7 @@ h1 {
   background-color: #eee;
   border-radius: 6px;
   width: 100%;
+  margin: 1ex 0;
 }
 
 .asl-spell .cropper {
@@ -60,6 +56,10 @@ h1 {
 .asl-spell .cropper .respell {
   position: relative;
   top: 40%;
+}
+
+.respell-count {
+  font-size: 1.5ex;
 }
 
 .tools.primary button {
@@ -86,12 +86,16 @@ h1 {
 }
 
 .tip .active-word  {
-  line-height: 2.5em;
-  margin-left: 1em;
+  display: inline-block;
+  text-align: right;
 }
 
 .tools.secondary .tip {
   text-align: left;
+}
+
+.tools.secondary button {
+  padding: .25ex .5ex;
 }
 
 .tools .active-word .word,
@@ -164,7 +168,8 @@ h1 {
 
 .tip {
   border-bottom: 1px solid #e9e9e9;
-  margin-bottom: 2ex;
+  margin-bottom: 1ex;
+  padding-bottom: 1ex;
 }
 
 /* ng{Show,Hide} pairing */
