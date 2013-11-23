@@ -42,15 +42,15 @@ var Controller = function(
   this.signDelay_ = null;
 
   /**
-   * Sequential index of the particular sign in a set of signs that are
-   * being displayed.
+   * Sequential index of the particular sign, in a set of signs, that is
+   * currently being displayed.
    *
    * For example: If "foo" is being finger-spelled, then "f" is index 0, "o" is
    * 1, and the last "o" is 2.
    *
    * @type {number}
    */
-  this.signIndex_ = 0;
+  this.nextSignIndex_ = 0;
 
   /**
    * Free database of Words fetched from
@@ -317,17 +317,17 @@ Controller.prototype.fingerSpellWord = function(toSpell) {
   if (!toSpell || !toSpell.match(/^[a-z0-9]*$/i)) {
     return;
   }
-  this.signIndex_ = 0;  // reset
 
   // Stop other finger-spelling sequences
   if (this.signDelay_) {
     this.timeout_.cancel(this.signDelay_);
   }
 
+  this.nextSignIndex_ = 0;  // reset
   // Keep track of finger-spellings
   this.recordFingerSpelling_(toSpell);
 
-  this.delaySpell_(toSpell);  // kick off spelling
+  this.delaySpell_(this.getLastWord());  // kick off spelling
 };
 
 
@@ -346,7 +346,7 @@ Controller.prototype.fingerSpell_ = function(letter) {
  * @private
  */
 Controller.prototype.getSpellDelay_ = function() {
-  var isFirstLetter = !this.signIndex_;
+  var isFirstLetter = !this.nextSignIndex_;
   var secondsToSpell = isFirstLetter ?
       0 : parseFloat(this.scope_.config.letter_delay, 10);
   var milliseconds = secondsToSpell * 1000;
@@ -355,9 +355,9 @@ Controller.prototype.getSpellDelay_ = function() {
 
 
 /**
- * @return {!angular.Promise}
  * @param {string} toSpell
  *     The full word being spelled.
+ * @return {!angular.Promise}
  * @private
  */
 Controller.prototype.delaySpell_ = function(toSpell) {
@@ -376,15 +376,28 @@ Controller.prototype.delaySpell_ = function(toSpell) {
  * @private
  */
 Controller.prototype.renderSpellRecursive_ = function(toSpell) {
-  var letterToSpell = toSpell[this.signIndex_++]
+  var letterToSpell = toSpell[this.nextSignIndex_++]
 
   this.fingerSpell_(letterToSpell);
 
   if (letterToSpell) {
-    this.delaySpell_(toSpell); // recurse
+    // recurse, characters still remain
+    this.delaySpell_(toSpell);
   } else {
     this.timeout_.cancel(this.signDelay_);
   }
+};
+
+
+/**
+ * @param {string} char
+ * @return {boolean}
+ *     Whether {@code char} is identical to the previous character that was
+ *     spelled.
+ */
+Controller.prototype.isConsecutive = function(char) {
+  return this.signInProgress() &&
+         this.getLastWord()[this.nextSignIndex_ - 2] === char;
 };
 
 

@@ -46,6 +46,12 @@ h1 {
   margin: 1ex 0;
 }
 
+.asl-spell.consecutive .finger-sign {
+  margin-left: 2ex;
+  margin-top: 1ex;
+  transition-duration: .25s;
+}
+
 .asl-spell .cropper {
   overflow: hidden;
   width: 100%;

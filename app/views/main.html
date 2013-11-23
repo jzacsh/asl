@@ -27,7 +27,8 @@
 </div><!--//.tools-->
 
 <div class="asl-spell"
-     data-asl-spell="{{config.active_sign}}">
+     data-asl-spell="{{config.active_sign}}"
+     ng:class="{consecutive: Ctrl.isConsecutive(config.active_sign)}">
   <div class="cropper">
     <button class="respell btn btn-warning icon"
             title="Re&ndash;spell"
