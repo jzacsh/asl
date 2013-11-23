@@ -124,6 +124,10 @@ h1 {
   font-style: italic;
 }
 
+.tools.secondary > *:last-child {
+  margin-bottom: 0;
+}
+
 .history {
   font-size: 1.25ex;
 }
