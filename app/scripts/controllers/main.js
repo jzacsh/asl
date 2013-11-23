@@ -361,7 +361,7 @@ Controller.prototype.getSpellDelay_ = function() {
  * @private
  */
 Controller.prototype.delaySpell_ = function(toSpell) {
-  this.scope_.delay = this.timeout_(
+  this.signDelay_ = this.timeout_(
       angular.bind(this, this.renderSpellRecursive_, toSpell),
       this.getSpellDelay_());
 };
