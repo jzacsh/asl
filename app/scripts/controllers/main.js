@@ -69,7 +69,7 @@ var Controller = function(
   // Kick off an example, to show what this app can do.
   this.fingerSpellWord(Controller.EXAMPLE_FINGERSPELL);
 
-  return this.scope_.Ctrl = this;
+  return this.scope_.ctrl = this;
 };
 
 

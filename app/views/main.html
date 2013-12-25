@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">ASL Finger Spelling</h1>
 <div class="debug" ng:hide="config.is_likely_prod">
-  <button ng:click="Ctrl.toggleDebug()">
+  <button ng:click="ctrl.toggleDebug()">
     <span ng:show="config.debug_visible">hide</span>
     <span ng:hide="config.debug_visible">show</span>
     debug info
@@ -12,11 +12,11 @@
   Spell a
   <button class="btn btn-primary"
           tabindex="2"
-          ng:click="Ctrl.spellPseudoRandomWord()">
+          ng:click="ctrl.spellPseudoRandomWord()">
     random
   </button>
   or
-  <form ng:submit="Ctrl.fingerSpellWord(config.to_spell)">
+  <form ng:submit="ctrl.fingerSpellWord(config.to_spell)">
     <input type="text"
            name="spell"
            tabindex="1"
@@ -28,12 +28,12 @@
 
 <div class="asl-spell"
      data-asl-spell="{{config.active_sign}}"
-     ng:class="{consecutive: Ctrl.isConsecutive(config.active_sign)}">
+     ng:class="{consecutive: ctrl.isConsecutive(config.active_sign)}">
   <div class="cropper">
     <button class="respell btn btn-warning icon"
             title="Re&ndash;spell"
-            ng:hide="Ctrl.signInProgress()"
-            ng:click="Ctrl.fingerSpellWord(Ctrl.getLastWord())">
+            ng:hide="ctrl.signInProgress()"
+            ng:click="ctrl.fingerSpellWord(ctrl.getLastWord())">
       &#10227;
     </button>
     <div class="finger-sign"></div>
@@ -45,9 +45,9 @@
     <span class="respell">
       <button class="btn icon"
               title="Re&ndash;spell"
-              ng:class="{ 'btn-mini': !Ctrl.signInProgress(), 'btn-warning': Ctrl.signInProgress() }"
+              ng:class="{ 'btn-mini': !ctrl.signInProgress(), 'btn-warning': ctrl.signInProgress() }"
               ng:show="config.spelled_history.length"
-              ng:click="Ctrl.fingerSpellWord(Ctrl.getLastWord())">
+              ng:click="ctrl.fingerSpellWord(ctrl.getLastWord())">
         &#10227;
       </button>
       <em class="respell-count"
@@ -56,18 +56,18 @@
         {{config.respell_count}}x</em>
     </span>
     <span class="active-word">
-      <strong ng:show="Ctrl.signInProgress()">Being signed:</strong>
-      <strong ng:hide="Ctrl.signInProgress()">Just signed:</strong>
+      <strong ng:show="ctrl.signInProgress()">Being signed:</strong>
+      <strong ng:hide="ctrl.signInProgress()">Just signed:</strong>
       <span class="instructions">(hidden)</span>
-      <span class="word">{{Ctrl.getLastWord()}}</span>
+      <span class="word">{{ctrl.getLastWord()}}</span>
     </span>
   </div><!--//.tip-->
 
   <label for="speed">
     <button asl-txt-img
             class="btn slower"
-            ng:click="Ctrl.increaseLetterDelay()"
-            ng:disable="!Ctrl.increaseLetterDelayPossible()">
+            ng:click="ctrl.increaseLetterDelay()"
+            ng:disable="!ctrl.increaseLetterDelayPossible()">
       slower fingerspelling</button>
     <input type="number"
            name="speed"
@@ -78,8 +78,8 @@
     seconds per letter
     <button asl-txt-img
             class="btn faster"
-            ng:click="Ctrl.decreaseLetterDelay()"
-            ng:disable="!Ctrl.decreaseLetterDelayPossible()">
+            ng:click="ctrl.decreaseLetterDelay()"
+            ng:disable="!ctrl.decreaseLetterDelayPossible()">
       faster fingerspelling</button>
   </label>
   <p class="history"
